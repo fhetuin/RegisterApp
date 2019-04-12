@@ -1,4 +1,5 @@
-﻿using RegisterApp.Tools;
+﻿using Android.Content.Res;
+using RegisterApp.Tools;
 using RegisterApp.View;
 using System;
 using System.IO;
@@ -23,10 +24,13 @@ namespace RegisterApp
             database = new RegisterDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RegisterDB.db3"));
 
             //Je récupére le JSON
+            //AssetManager assets = Android.App.Application.Context.Assets;
+            /*
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
             Stream stream = assembly.GetManifestResourceStream("RegisterApp.service.json");
+            */
             string json = string.Empty;
-            using (var reader = new System.IO.StreamReader(stream))
+            using (var reader = new System.IO.StreamReader(Android.App.Application.Context.Assets.Open("service.json")))
             {
                 //On le lit
                 json = reader.ReadToEnd();
