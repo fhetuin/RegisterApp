@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:RegisterApp.Model"
+             xmlns:view="clr-namespace:RegisterApp.View"
+             x:Class="RegisterApp.View.MainView"
+            xmlns:controls="clr-namespace:RegisterApp.Controls"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.IsSwipePagingEnabled="True"
+            BarBackgroundColor="Green"
+            BarTextColor="White"
+            
+            >
+
+    <view:ServiceView BindingContext="{Binding}" HeightRequest="10" WidthRequest="10" Title="Service" />
+
+
+    <view:FormView BindingContext="{Binding}" HeightRequest="10" WidthRequest="10" Title="Formulaire"/>
+
+
+    <view:ResultView BindingContext="{Binding ResultViewModel}"  HeightRequest="10" WidthRequest="10" Title="Résultat"/>
+
+    <view:DevView WidthRequest="2" Title="Dev"/>
+
+
+</TabbedPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:RegisterApp.Model"
+             x:Class="RegisterApp.View.DevView"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:tools="clr-namespace:RegisterApp.Tools">
+    <ContentPage.Resources>
+        <tools:ServiceToListConverter x:Key="serviceToListConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="Green">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Développeur" Grid.Row="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Column="0" FontSize="Large"></Label>
+                <Button WidthRequest="40" Grid.Row="0"  Command="{Binding ShowInformationCommand}"  VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" HeightRequest="40" BorderRadius="20" Grid.Column="1" Text="?"></Button>
+            </Grid>
+            <Label Text="HETUIN FLORIAN"></Label>
+            <Label Text="BLEUSEZ NATHAN"></Label>
+            <Label Text="THILLIEZ LUC"></Label>
+            <Label Text="BONNET THOMAS"></Label>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

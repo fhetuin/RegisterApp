@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Formulaire" xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:RegisterApp.Model"
+             x:Class="RegisterApp.View.FormView"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:tools="clr-namespace:RegisterApp.Tools">
+    <ContentPage.Resources>
+        <tools:ServiceToListConverter x:Key="serviceToListConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="Green">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Formulaire" Grid.Row="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Column="0" FontSize="Large"></Label>
+                <Button WidthRequest="40" Grid.Row="0"  Command="{Binding ShowInformationCommand}"  VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" HeightRequest="40" BorderRadius="20" Grid.Column="1" Text="?"></Button>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding SelectedService.Title}" FontSize="Large" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Image Source="{Binding SelectedService.Logo}" Grid.Row="0" Grid.Column="1"/>
+            </Grid>
+            <ListView HasUnevenRows="True" ItemsSource="{Binding SelectedService, Converter={StaticResource serviceToListConverter}}" ItemTemplate="{Binding ServiceDataTemplateSelector}">
+            </ListView>
+            <StackLayout Orientation="Vertical">
+                <Label TextColor="Red" Text="Veuillez remplir tous les champs obligatoires" IsVisible="{Binding FieldsErrorVisibility}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" Text="Annuler" Command="{Binding CancelCommand}"  CommandParameter="{x:Reference Formulaire}"></Button>
+                    <Button Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" Text="Valider" Command="{Binding RegisterCommand}"></Button>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+           
+  </ContentPage.Content>
+</ContentPage>
