@@ -79,10 +79,7 @@ namespace RegisterApp.ViewModel
             if(CanRegisterUser())
             {
                 FieldsErrorVisibility = false;
-                List<Result> resultOfService = ProprietesGlobales.CurrentUser.Results.Where(r => r.ServiceId == selectedService.Id).ToList();
-                User userWithResultOfService = ProprietesGlobales.CurrentUser; 
-                userWithResultOfService.Results = resultOfService; // On sauvegarde que les résultats qui concerne le service en cours
-                App.Database.SaveUserAsync(userWithResultOfService);
+                App.Database.SaveUserAsync(ProprietesGlobales.CurrentUser); // On sauvegarde l'utilisateur
                 /*List<Result> results = ProprietesGlobales.CurrentUser.Results.Where(r => r.ServiceId == SelectedService.Id).ToList();
                 App.Database.SaveResultsAsync(results).Wait();*/
             }
